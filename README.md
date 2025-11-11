@@ -37,9 +37,15 @@ Godot's LSP server sends documentation in BBCode format with embedded signatures
 
 ### 2. Installation
 
-Build from source:
+**Standard build:**
 ```bash
 dotnet build --configuration Release
+```
+
+**Native AOT (smaller, faster):**
+```bash
+dotnet publish -c Release -r win-x64 --self-contained
+# or: -r linux-x64, -r osx-arm64
 ```
 
 ### 3. Configure Helix
@@ -56,7 +62,9 @@ name = "gdscript"
 scope = "source.gdscript"
 file-types = ["gd"]
 language-servers = ["godot"]
+indent = { tab-width = 2, unit = "\t" }
 ```
+> **tab-width** is just the rendered size of the tabs in Helix, and "\t" sets the **unit** to tabs which is the recommended unit for GDScript
 
 ## Configuration
 
